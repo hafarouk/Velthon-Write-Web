@@ -96,3 +96,35 @@
 #app #saved,#app .app-top button span{white-space:nowrap}
 @media(max-width:1100px){#app .top-tagline,#app .top-divider{display:none}}
 @container(max-width:540px){#app #inkPanel .ribbon-properties{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:3px 7px!important;padding:3px 8px!important}#app #inkPanel .ribbon-properties>button,#app #inkPanel .ribbon-properties>label{justify-self:start}#app #inkPanel .ribbon-properties #writeStylusMode,#app #inkPanel .ribbon-properties>label:nth-of-type(2){justify-self:center}#app #inkPanel .ribbon-properties .write-zoom-readout,#app #inkPanel .ribbon-properties>label:last-child{justify-self:end}}
+
+/* Writing focus: the original four-square button becomes the restore handle. */
+.focus-utilities{display:none}
+body.focus-mode #app .app-top{height:0;min-height:0;padding:0;border:0;overflow:visible;position:relative;z-index:15}
+body.focus-mode #app .app-top>*:not(#libraryToggle){display:none!important}
+body.focus-mode #app #libraryToggle{position:fixed;top:3px;left:4px;width:29px;height:28px;min-height:28px;padding:5px;border:1px solid #c5a05270;background:#193650;color:#e0c681;z-index:25;border-radius:6px}
+body.focus-mode #app #libraryToggle:hover{background:#35536a}
+body.focus-mode #app #libraryToggle svg{width:18px;height:18px}
+body.focus-mode #app #library,body.focus-mode #app .ribbon-note-header,body.focus-mode #app .desk-footer,body.focus-mode #app #handStatus{display:none!important}
+body.focus-mode #app #inkPanel{padding:0;position:relative}
+body.focus-mode #app #inkPanel .studio-toolbar{border-radius:0}
+body.focus-mode #app #inkPanel .ribbon-command{padding-left:40px!important;border-radius:0;min-height:34px}
+body.focus-mode #app #inkPanel .focus-utilities{display:flex;align-items:center;gap:1px;margin-left:auto}
+body.focus-mode #app #inkPanel .focus-utilities button{width:28px;min-width:28px;height:28px;min-height:28px!important;padding:4px!important}
+body.focus-mode #app #inkPanel .focus-utilities svg{width:18px;height:18px;display:block}
+body.focus-mode #app [data-focus-save]{font-size:8px;white-space:nowrap;font-weight:300;color:#d2d9cd;margin:0 6px;max-width:105px;overflow:hidden;text-overflow:ellipsis}
+body.focus-mode #app #inkPanel .studio-paper-scroll{padding:0;background:var(--card);overscroll-behavior:contain}
+body.focus-mode #app #inkPanel #handCanvas{max-width:none;border:0;border-radius:0;box-shadow:none;margin:0 auto}
+body.focus-mode #app #inkPanel .ribbon-vertical{border-radius:0}
+body.focus-mode #app .notebook-page-navigation{position:absolute;right:12px;bottom:8px;z-index:9;width:auto;min-height:28px;padding:1px 5px;gap:3px;background:#193650ed;border:1px solid #c5a05270;border-radius:7px;box-shadow:0 2px 10px #19365020}
+body.focus-mode #app .notebook-page-navigation button{color:#d6b45d;min-width:27px!important;min-height:26px!important;padding:3px!important}
+body.focus-mode #app .notebook-page-count{color:#f1e6c9;font-size:10px;min-width:67px}
+body.focus-mode #app .notebook-page-navigation button:hover{background:#ffffff14}
+body.focus-mode #app .notebook-page-navigation button:first-child{margin:0}
+@media(pointer:coarse){body.focus-mode #app #libraryToggle{top:4px;width:34px;height:34px;min-height:34px}body.focus-mode #app #inkPanel .ribbon-command{padding-left:44px!important;min-height:40px}body.focus-mode #app #inkPanel .focus-utilities button{width:34px;min-width:34px;height:34px;min-height:34px!important}}
+@container(max-width:700px){body.focus-mode #app #inkPanel .focus-utilities{margin-left:0}body.focus-mode #app [data-focus-save]{max-width:85px;font-size:7px}}
+/* Keep a full touch target behind the visible folded triangle. */
+#inkPanel .studio-stage>.notebook-curl{clip-path:none;background:transparent!important;filter:none}
+#inkPanel .studio-stage>.notebook-curl:before{content:'';position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 100%);background:#c29a38;filter:drop-shadow(-2px -2px 2px #20395355)}
+#inkPanel .studio-stage>.notebook-curl:hover{background:transparent!important}
+#inkPanel .studio-stage>.notebook-curl:hover:before{background:#e8c565}
+@container(max-width:700px){body.focus-mode #app #inkPanel .ribbon-quick{display:contents}body.focus-mode #app [data-focus-save]{display:none}}
